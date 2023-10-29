@@ -1,117 +1,24 @@
 import logo from "./logo.svg";
 import "./App.css";
-import axios from 'axios'
+import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { BookFlightPage } from "./pages/book-flight/BookFlightPage";
+import { Page2 } from "./pages/page2/page2/Page2";
+import NoMatch from "./pages/no-match/NoMatch";
+import MasterPage from "./masterLayout/MasterPage";
 
 function App() {
-
-  const onSendClick = (e) => {
-    e.preventDefault();
-    const getValue = e.currentTarget.elements
-
-    const params = {
-      "departFrom": getValue.departForm.value,
-      "arriveTo": getValue.arriveTo.value,
-      "departureDate": getValue.departureDate.value,
-      "passengerName": getValue.passengerName.value
-    }
-
-    axios.post("http://hyper-runtime-dev.techberry.co.th/apis/oneclick-bookflight-00b62", params)
-  }
-
   return (
-    <div style={{backgroundImage: "url('%PUBLIC_URL%/plane.png')"}}>
-    <div className="container p-5 bg-light rounded shadow" style={{marginTop: "150px"}}>
-      <form onSubmit={onSendClick}>
-        <fieldset className="row">
-          <h1 className="d-flex justify-content-start mb-5">Book Flight </h1><i className="bi bi-send" />
+    <>
+      <Routes>
+        <Route path="/" element={<MasterPage />}>
+          <Route index element={<BookFlightPage />} />
+          <Route path="bookflight" element={<BookFlightPage />} />
+          <Route path="page2" element={<Page2 />} />
 
-          <div className="col-6">
-          <div className="mb-3">
-            <label htmlFor="disabledTextInput" className="form-label">
-              Depart From
-            </label>
-            <input
-              type="text"
-              id="departForm"
-              name="departForm"
-              className="form-control"
-              placeholder="Depart From"
-            />
-            </div>
-          </div>
-
-          <div className="col-6">
-          <div className="mb-3">
-            <label htmlFor="disabledSelect" className="form-label">
-              Arrive To
-            </label>
-            <input
-              type="text"
-              id="arriveTo"
-              name="arriveTo"
-              className="form-control"
-              placeholder="Arrive To"
-            />
-            </div>
-          </div>
-
-          <div className="col-6">
-          <div className="mb-3">
-            <label htmlFor="disabledSelect" className="form-label">
-              Departure Date
-            </label>
-            <input
-              type="text"
-              id="departureDate"
-              name="departureDate"
-              className="form-control"
-              placeholder="Departure Date"
-            />
-            </div>
-          </div>
-
-          <div className="col-6">
-            <div className="mb-3">
-              <label htmlFor="disabledSelect" className="form-label">
-                Passenger Name
-              </label>
-              <input
-                type="text"
-                id="passengerName"
-                name="passengerName"
-                className="form-control"
-                placeholder="Passenger Name"
-              />
-              </div>
-          </div>
-
-          <div className="col-12">
-            <div className="mb-3">
-              <label htmlFor="disabledSelect" className="form-label">
-                LINE Token
-              </label>
-              <input
-                type="text"
-                id="lineToken"
-                name="lineToken"
-                className="form-control"
-                placeholder="LINE Token"
-              />
-              </div>
-          </div>
-          
-          <div className="col-12 mt-3">
-            <button type="submit" className="btn btn-primary w-100">
-              Send
-            </button>
-          </div>
-        </fieldset>
-      </form>
-      <div className="d-flex justify-content-center mt-5">
-        Copyright © TechBerry Co., Ltd. All Rights Reserved.
-      </div>
-    </div>
-    </div>
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
