@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 
 export const BookForm = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const onSendClick = (e) => {
     e.preventDefault();
     const getValue = e.currentTarget.elements;
@@ -21,17 +21,19 @@ export const BookForm = () => {
     );
   };
   return (
-    <div style={{ backgroundImage: "url('%PUBLIC_URL%/plane.png')" }}>
-      <div
+  <>
+  <div
         className="container p-5 bg-light rounded shadow"
         style={{ marginTop: "150px" }}
       >
-        <button className="btn btn-primary" onClick={() => navigate("/page2")}>
-          Go Page 2
-        </button>
         <form onSubmit={onSendClick}>
           <fieldset className="row">
-            <h1 className="d-flex justify-content-start mb-5">Book Flight </h1>
+            <div className="d-flex justify-content-between mb-5">
+              <h1>Book Flight </h1>
+              <div>
+                <button className='btn btn-primary' onClick={() => navigate("/bookList")}>Book List</button>
+              </div>
+              </div>
             <i className="bi bi-send" />
 
             <div className="col-6">
@@ -119,7 +121,7 @@ export const BookForm = () => {
         <div className="d-flex justify-content-center mt-5">
           Copyright © TechBerry Co., Ltd. All Rights Reserved.
         </div>
-      </div>
-    </div>
+        </div>
+        </>
   );
 };

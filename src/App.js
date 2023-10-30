@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<MasterPage />}>
           <Route index element={<BookFlightPage />} />
           <Route path="bookflight" element={<BookFlightPage />} />
-          <Route path="page2" element={<Page2 />} />
+          <Route path="bookList" element={<Page2 />} />
 
           <Route path="*" element={<NoMatch />} />
         </Route>
