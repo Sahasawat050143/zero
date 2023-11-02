@@ -43,7 +43,7 @@ export const Page2 = () => {
   return (
     <>
       <div
-        className="container p-5 bg-light rounded shadow"
+        className="container px-5 pt-5 pb-3 bg-light rounded shadow"
         style={{ marginTop: "50px" }}
       >
         <div className='d-flex'>
@@ -53,6 +53,9 @@ export const Page2 = () => {
           <button className='btn btn-primary' onClick={() => onSearchClick()}>Search</button>
         </div>
         <Table columns={columns} dataSource={data} pagination={true} loading={loading}/>
+        <div className="d-flex justify-content-center mt-3">
+          Copyright © TechBerry Co., Ltd. All Rights Reserved.
+        </div>
       </div>
     </>
   )
